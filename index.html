@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personajes IA</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 22px 18px;
+      background: #181818;
+      border-bottom: 1px solid #292929;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 25px;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      color: #aaa;
+    }
+
+    .characters {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .character {
+      background: #1c1c1c;
+      border-radius: 16px;
+      padding: 12px;
+      border: 1px solid #292929;
+    }
+
+    .avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #333, #181818);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 45px;
+    }
+
+    .character h2 {
+      margin: 10px 0 4px;
+      font-size: 18px;
+    }
+
+    .character p {
+      margin: 0;
+      color: #999;
+      font-size: 13px;
+    }
+
+    .online {
+      color: #4ade80 !important;
+      margin-top: 6px !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Personajes IA</h1>
+    <p>Elegí con quién querés hablar</p>
+  </header>
+
+  <main class="characters">
+
+    <div class="character">
+      <div class="avatar">👩🏻</div>
+
+      <h2>Josefina</h2>
+
+      <p>20 años · Argentina</p>
+
+      <p class="online">● En línea</p>
+    </div>
+
+  </main>
+
+</body>
+</html>
