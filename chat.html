@@ -142,14 +142,16 @@
       const messages = document.getElementById("messages");
 
       const message = document.createElement("div");
-      message.className = "message you";
-      message.textContent = text;
+message.className = "message you";
+message.textContent = text;
 
-      messages.appendChild(message);
+messages.appendChild(message);
 
-      input.value = "";
-      messages.scrollTop = messages.scrollHeight;
+saveMessage("you", text);
 
+input.value = "";
+messages.scrollTop = messages.scrollHeight;
+      
       setTimeout(() => {
 
   const reply = document.createElement("div");
@@ -186,6 +188,35 @@
 
 }, 1000);
     }
+  function saveMessage(type, text) {
+  const chat = JSON.parse(localStorage.getItem("sofiaChat") || "[]");
+
+  chat.push({
+    type: type,
+    text: text
+  });
+
+  localStorage.setItem("sofiaChat", JSON.stringify(chat));
+}
+
+function loadMessages() {
+  const chat = JSON.parse(localStorage.getItem("sofiaChat") || "[]");
+
+  chat.forEach(item => {
+    const message = document.createElement("div");
+
+    message.className =
+      item.type === "you"
+        ? "message you"
+        : "message sofia";
+
+    message.textContent = item.text;
+
+    document.getElementById("messages").appendChild(message);
+  });
+}
+
+loadMessages();
   </script>
 
 </body>
