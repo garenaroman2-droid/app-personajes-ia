@@ -182,7 +182,8 @@ messages.scrollTop = messages.scrollHeight;
   else {
     reply.textContent = "Jajaja, contame más 👀";
   }
-
+        saveMessage("sofia", reply.textContent);
+        
   messages.appendChild(reply);
   messages.scrollTop = messages.scrollHeight;
 
