@@ -152,42 +152,40 @@ saveMessage("you", text);
 input.value = "";
 messages.scrollTop = messages.scrollHeight;
       
-      setTimeout(() => {
+      fetch("https://app-personajes-ia.onrender.com/chat", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    message: text
+  })
+})
+.then(response => response.json())
+.then(data => {
 
   const reply = document.createElement("div");
   reply.className = "message sofia";
+  reply.textContent = data.reply;
 
-  const lower = text.toLowerCase();
+  saveMessage("sofia", data.reply);
 
-  if (lower.includes("hola")) {
-    reply.textContent = "Holaa 😏 ¿cómo estás?";
-  }
-
-  else if (lower.includes("qué hacés") || lower.includes("que haces")) {
-    reply.textContent = "Acá tranqui, hablando con vos jajaja. ¿Vos qué hacés?";
-  }
-
-  else if (lower.includes("cómo estás") || lower.includes("como estas")) {
-    reply.textContent = "Estoy bien 😌 ¿y vos?";
-  }
-
-  else if (lower.includes("nombre")) {
-    reply.textContent = "Soy Sofía 😊";
-  }
-
-  else if (lower.includes("edad") || lower.includes("años")) {
-    reply.textContent = "Tengo 20 años 😌";
-  }
-
-  else {
-    reply.textContent = "Jajaja, contame más 👀";
-  }
-        saveMessage("sofia", reply.textContent);
-        
   messages.appendChild(reply);
   messages.scrollTop = messages.scrollHeight;
 
-}, 1000);
+})
+.catch(error => {
+
+  console.error(error);
+
+  const reply = document.createElement("div");
+  reply.className = "message sofia";
+  reply.textContent = "Uy, tuve un problema 😅";
+
+  messages.appendChild(reply);
+
+});
+
     }
   function saveMessage(type, text) {
   const chat = JSON.parse(localStorage.getItem("sofiaChat") || "[]");
